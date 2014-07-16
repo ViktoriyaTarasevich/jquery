@@ -1,10 +1,13 @@
 .blockInterface{
-    text-align: center;
     background-color : #FFE4B5 ;
     color: #000080;
-    opacity: 0.3;
+    opacity: 0.7;
 }
 #div_with_buttons{
 
     background-color : #7B68EE ;
+}
+.defaultBlock{
+    background-color: #DCDCDC;
+    color: #000000;
 }

@@ -2,11 +2,7 @@
     jQuery.fn.interfaceBlock = function (text, delay, options) {
         var element = this;
         options = $.extend({
-            backgroundColor: '#DCDCDC',
-            textColor: '000000',
-            textAlign: 'auto',
-            opacityElement: 0.7,
-            type: ''
+            type: 'defaultBlock'
         }, options);
         var textInsideBlock = '<p class ="textInsideBlock"></p>';
 
@@ -19,15 +15,16 @@
         function deleteBlock() {
             $(this)
                 .removeClass(options.type)
-                .removeAttr('style')
-                .removeAttr('disabled');
+                .prop('disabled', false);
         }
 
-        var newEl = element.prepend(textInsideBlock);
-        $('.textInsideBlock').text(text).css('text-align', options.textAlign);
-        if ($(element)[0] === document){
-            element = $('html');
+        if (element.get(0) === document) {
+            element = $('body');
         }
+
+        element.prepend(textInsideBlock);
+        $('.textInsideBlock').text(text);
+
         element.each(setBlock);
         var allChildren = element.find('*');
         allChildren.each(setBlock);
