@@ -4,7 +4,8 @@
         options = $.extend({
             backgroundColor: "#DCDCDC",
             textColor: "#000000",
-            textAlign: 'auto'
+            textAlign: 'auto',
+            opacityElement: 0.7
         }, options);
         var textInsideBlock = '<p class ="textInsideBlock"></p>';
 
@@ -13,7 +14,8 @@
                 .addClass('frozenElement')
                 .css({
                     'background-color': options.backgroundColor,
-                    'color': options.textColor
+                    'color': options.textColor,
+                    'opacity': options.opacityElement
                 })
                 .prop('disabled', true);
         }
