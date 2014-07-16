@@ -2,35 +2,32 @@
     jQuery.fn.interfaceBlock = function (text, delay, options) {
         var element = this;
         options = $.extend({
-            backgroundColor: "#DCDCDC",
-            textColor: "#000000",
+            backgroundColor: '#DCDCDC',
+            textColor: '000000',
             textAlign: 'auto',
-            opacityElement: 0.7
+            opacityElement: 0.7,
+            type: ''
         }, options);
         var textInsideBlock = '<p class ="textInsideBlock"></p>';
 
         function setBlock() {
             $(this)
-                .addClass('frozenElement')
-                .css({
-                    'background-color': options.backgroundColor,
-                    'color': options.textColor,
-                    'opacity': options.opacityElement
-                })
+                .addClass(options.type)
                 .prop('disabled', true);
         }
 
         function deleteBlock() {
             $(this)
-                .removeClass('frozen_element')
+                .removeClass(options.type)
                 .removeAttr('style')
                 .removeAttr('disabled');
         }
 
         var newEl = element.prepend(textInsideBlock);
         $('.textInsideBlock').text(text).css('text-align', options.textAlign);
-        if ($(element)[0] === document)
+        if ($(element)[0] === document){
             element = $('html');
+        }
         element.each(setBlock);
         var allChildren = element.find('*');
         allChildren.each(setBlock);
